@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas 9 - SMP 2 Kalapa Nunggal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        #beranda {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-logo {
+            font-size: 6em;
+            margin-bottom: 25px;
+        }
+
+        .school-name {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .class-info {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+        }
+
+        .motto {
+            font-size: 1.5em;
+            font-style: italic;
+            padding: 25px 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Sambutan */
+        #sambutan {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .section-title {
+            font-size: 3.5em;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .welcome-card {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .welcome-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
+
+        .welcome-icon {
+            font-size: 5em;
+            margin-bottom: 25px;
+        }
+
+        .welcome-card h3 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .welcome-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        /* Struktur */
+        #struktur {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .wali-kelas {
+            background: white;
+            padding: 70px 50px;
+            border-radius: 30px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .wali-icon {
+            font-size: 6em;
+            margin-bottom: 25px;
+        }
+
+        .wali-kelas h3 {
+            font-size: 2.3em;
+            color: #667eea;
+            margin-bottom: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .wali-name {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin: 25px 0;
+            color: #333;
+        }
+
+        .wali-subject {
+            font-size: 1.5em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .pengurus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pengurus-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border-left: 6px solid;
+        }
+
+        .pengurus-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .pengurus-card.ketua { border-left-color: #667eea; }
+        .pengurus-card.wakil { border-left-color: #43e97b; }
+        .pengurus-card.sekretaris { border-left-color: #fa709a; }
+        .pengurus-card.bendahara { border-left-color: #ffd93d; }
+        .pengurus-card.keamanan-l { border-left-color: #30cfd0; }
+        .pengurus-card.keamanan-p { border-left-color: #ff9a9e; }
+        .pengurus-card.kebersihan-l { border-left-color: #81c784; }
+        .pengurus-card.kebersihan-p { border-left-color: #4db6ac; }
+        .pengurus-card.olahraga-l { border-left-color: #ff6b6b; }
+        .pengurus-card.olahraga-p { border-left-color: #feca57; }
+
+        .pengurus-card h4 {
+            font-size: 1.1em;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .pengurus-name {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .pengurus-no {
+            color: #999;
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        /* Jadwal */
+        #jadwal {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+
+        .schedule-box {
+            background: white;
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        .schedule-box h3 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        .schedule-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .schedule-table th {
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .schedule-table th:first-child {
+            border-radius: 15px 0 0 15px;
+        }
+
+        .schedule-table th:last-child {
+            border-radius: 0 15px 15px 0;
+        }
+
+        .schedule-table tbody tr {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .schedule-table tbody tr:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .schedule-table td {
+            padding: 18px 20px;
+            font-size: 1.05em;
+        }
+
+        .schedule-table td:first-child {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .schedule-table td:last-child {
+            font-weight: 600;
+        }
+
+        .schedule-table tr.break {
+            background: linear-gradient(135deg, #ffe0b2 0%, #ffecb3 100%);
+            font-weight: bold;
+        }
+
+        .schedule-table tr.break:hover {
+            transform: none;
+        }
+
+        /* Mata Pelajaran */
+        #mapel {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: white;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .subject-card {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            border-top: 6px solid;
+            border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .subject-code {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .subject-name {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #333;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+        }
+
+        .subject-teacher {
+            color: #666;
+            padding-top: 20px;
+            border-top: 3px solid #f0f0f0;
+            font-weight: 500;
+            font-size: 1.15em;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        footer p {
+            margin: 12px 0;
+            font-size: 1.15em;
+        }
+
+        footer p:first-child {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .school-name {
+                font-size: 2.2em;
+            }
+
+            .section-title {
+                font-size: 2.5em;
+            }
+
+            .header-logo {
+                font-size: 4em;
+            }
+
+            .motto {
+                font-size: 1.2em;
+                padding: 20px 30px;
+            }
+
+            .pengurus-grid,
+            .subject-grid,
+            .welcome-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-box {
+                padding: 25px;
+            }
+
+            .schedule-table {
+                font-size: 0.9em;
+            }
+
+            .nav-container {
+                gap: 8px;
+            }
+
+            .nav-link {
+                padding: 10px 18px;
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#beranda" class="nav-link">🏠 Beranda</a>
+            <a href="#sambutan" class="nav-link">👋 Sambutan</a>
+            <a href="#struktur" class="nav-link">👥 Struktur</a>
+            <a href="#jadwal" class="nav-link">📅 Jadwal</a>
+            <a href="#mapel" class="nav-link">📚 Mata Pelajaran</a>
+        </div>
+    </nav>
+
+    <!-- Beranda -->
+    <section id="beranda">
+        <div class="container">
+            <div class="header-logo">🏫</div>
+            <h1 class="school-name">SMP 2 KALAPA NUNGGAL</h1>
+            <div class="class-info">Kelas 9 • Tahun Ajaran 2025/2026</div>
+            <div class="motto">"Solid, Kompak, dan Berprestasi"</div>
+        </div>
+    </section>
+
+    <!-- Sambutan -->
+    <section id="sambutan">
+        <div class="container">
+            <h2 class="section-title">Selamat Datang! 👋</h2>
+            <div class="welcome-grid">
+                <div class="welcome-card">
+                    <div class="welcome-icon">👥</div>
+                    <h3>Struktur Organisasi</h3>
+                    <p>Pengurus kelas yang solid dengan 10 posisi lengkap untuk mengatur dan mengelola kelas dengan baik</p>
+                </div>
+                <div class="welcome-card">
+                    <div class="welcome-icon">📅</div>
+                    <h3>Jadwal Pelajaran</h3>
+                    <p>Jadwal lengkap Senin sampai Jumat yang terorganisir rapi untuk pembelajaran yang efektif</p>
+                </div>
+                <div class="welcome-card">
+                    <div class="welcome-icon">📚</div>
+                    <h3>Mata Pelajaran</h3>
+                    <p>11 mata pelajaran lengkap dengan guru pengampu yang berkualitas dan berpengalaman</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Struktur -->
+    <section id="struktur">
+        <div class="container">
+            <h2 class="section-title">Struktur Organisasi Kelas 👥</h2>
+            
+            <div class="wali-kelas">
+                <div class="wali-icon">👨‍🏫</div>
+                <h3>WALI KELAS</h3>
+                <div class="wali-name">Dian Yusuf</div>
+                <div class="wali-subject">Guru PAI</div>
+            </div>
+
+            <div class="pengurus-grid">
+                <div class="pengurus-card ketua">
+                    <h4>⭐ KETUA KELAS</h4>
+                    <div class="pengurus-name">Yana Suryana</div>
+                    <div class="pengurus-no">No: 083857191393</div>
+                </div>
+
+                <div class="pengurus-card wakil">
+                    <h4>⭐ WAKIL KETUA KELAS</h4>
+                    <div class="pengurus-name">Ksatria Putra</div>
+                    <div class="pengurus-no">No: 085659438084</div>
+                </div>
+
+                <div class="pengurus-card sekretaris">
+                    <h4>📝 SEKRETARIS</h4>
+                    <div class="pengurus-name">Rini Apriani</div>
+                    <div class="pengurus-no">No: 088294909720</div>
+                </div>
+
+                <div class="pengurus-card bendahara">
+                    <h4>💰 BENDAHARA</h4>
+                    <div class="pengurus-name">Ami Aristi</div>
+                    <div class="pengurus-no">No: 083839473719</div>
+                </div>
+
+                <div class="pengurus-card keamanan-l">
+                    <h4>🔒 KEAMANAN LAKI-LAKI</h4>
+                    <div class="pengurus-name">Angga Irawan</div>
+                    <div class="pengurus-no">No: 085603136096</div>
+                </div>
+
+                <div class="pengurus-card keamanan-p">
+                    <h4>🔒 KEAMANAN PEREMPUAN</h4>
+                    <div class="pengurus-name">Anisa</div>
+                    <div class="pengurus-no">No: 083846708694</div>
+                </div>
+
+                <div class="pengurus-card kebersihan-l">
+                    <h4>🧹 KEBERSIHAN LAKI-LAKI</h4>
+                    <div class="pengurus-name">Niko</div>
+                    <div class="pengurus-no">No: 083805512284</div>
+                </div>
+
+                <div class="pengurus-card kebersihan-p">
+                    <h4>🧹 KEBERSIHAN PEREMPUAN</h4>
+                    <div class="pengurus-name">Risma</div>
+                    <div class="pengurus-no">No: 083105588784</div>
+                </div>
+
+                <div class="pengurus-card olahraga-l">
+                    <h4>⛹️ OLAHRAGA LAKI-LAKI</h4>
+                    <div class="pengurus-name">Riski Ayubi</div>
+                    <div class="pengurus-no">No: 083105587982</div>
+                </div>
+
+                <div class="pengurus-card olahraga-p">
+                    <h4>⛹️ OLAHRAGA PEREMPUAN</h4>
+                    <div class="pengurus-name">Sri Mulyani</div>
+                    <div class="pengurus-no">No: 083873630306</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jadwal -->
+    <section id="jadwal">
+        <div class="container">
+            <h2 class="section-title">Jadwal Pelajaran 📅</h2>
+            
+            <!-- Senin -->
+            <div class="schedule-box">
+                <h3>📅 SENIN</h3>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>⏰ Waktu</th>
+                            <th>📖 Mata Pelajaran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>07:00 - 07:45</td><td>Upacara Bendera</td></tr>
+                        <tr><td>07:45 - 08:30</td><td>PJOK</td></tr>
+                        <tr><td>08:30 - 09:15</td><td>PJOK</td></tr>
+                        <tr class="break"><td>09:15 - 09:30</td><td>🍔 ISTIRAHAT</td></tr>
+                        <tr><td>09:30 - 10:15</td><td>PAI</td></tr>
+                        <tr><td>10:15 - 11:00</td><td>PAI</td></tr>
+                        <tr><td>11:00 - 11:45</td><td>Bahasa Indonesia</td></tr>
+                        <tr><td>11:45 - 12:30</td><td>Bahasa Indonesia</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Selasa -->
+            <div class="schedule-box">
+                <h3>📅 SELASA</h3>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>⏰ Waktu</th>
+                            <th>📖 Mata Pelajaran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>07:00 - 07:45</td><td>Bahasa Indonesia</td></tr>
+                        <tr><td>07:45 - 08:30</td><td>Bahasa Indonesia</td></tr>
+                        <tr><td>08:30 - 09:15</td><td>IPS</td></tr>
+                        <tr class="break"><td>09:15 - 09:30</td><td>🍔 ISTIRAHAT</td></tr>
+                        <tr><td>09:30 - 10:15</td><td>IPS</td></tr>
+                        <tr><td>10:15 - 11:00</td><td>Bahasa Inggris</td></tr>
+                        <tr><td>11:00 - 11:45</td><td>Bahasa Inggris</td></tr>
+                        <tr><td>11:45 - 12:30</td><td>TIK</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Rabu -->
+            <div class="schedule-box">
+                <h3>📅 RABU</h3>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>⏰ Waktu</th>
+                            <th>📖 Mata Pelajaran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>07:00 - 07:45</td><td>IPA</td></tr>
+                        <tr><td>07:45 - 08:30</td><td>IPA</td></tr>
+                        <tr><td>08:30 - 09:15</td><td>Matematika</td></tr>
+                        <tr class="break"><td>09:15 - 09:30</td><td>🍔 ISTIRAHAT</td></tr>
+                        <tr><td>09:30 - 10:15</td><td>Matematika</td></tr>
+                        <tr><td>10:15 - 11:00</td><td>Bahasa Indonesia</td></tr>
+                        <tr><td>11:
